@@ -1,0 +1,21 @@
+10-27 19:26:00 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "bookauthors" not found; SQL statement:
+alter table "bookauthors" drop constraint FK79A56D3FDFE161E3 [42102-135]
+10-27 19:26:00 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "bookauthors" not found; SQL statement:
+alter table "bookauthors" drop constraint FK79A56D3F49979927 [42102-135]
+10-27 19:26:00 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "books" not found; SQL statement:
+alter table "books" drop constraint FK59922AAAF599E9D [42102-135]
+10-27 19:26:00 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "borrowers" not found; SQL statement:
+alter table "borrowers" drop constraint FK24379F514788034F [42102-135]
+10-27 19:26:00 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "items" not found; SQL statement:
+alter table "items" drop constraint FK5FDE7C0DFE16289 [42102-135]
+10-27 19:26:00 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "loans" not found; SQL statement:
+alter table "loans" drop constraint FK625D98325E4C23B [42102-135]
+10-27 19:26:00 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "loans" not found; SQL statement:
+alter table "loans" drop constraint FK625D983EC18805D [42102-135]

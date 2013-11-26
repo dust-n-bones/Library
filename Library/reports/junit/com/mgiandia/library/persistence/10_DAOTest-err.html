@@ -1,0 +1,75 @@
+<html xmlns:lxslt="http://xml.apache.org/xslt" xmlns:stringutils="xalan://org.apache.tools.ant.util.StringUtils">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Standard Error from DAOTest</title>
+</head>
+<body>
+<pre>0 [main] INFO org.hibernate.cfg.annotations.Version - Hibernate Annotations 3.5.2-Final
+20 [main] INFO org.hibernate.cfg.Environment - Hibernate 3.5.2-Final
+20 [main] INFO org.hibernate.cfg.Environment - hibernate.properties not found
+30 [main] INFO org.hibernate.cfg.Environment - Bytecode provider name : javassist
+30 [main] INFO org.hibernate.cfg.Environment - using JDK 1.4 java.sql.Timestamp handling
+190 [main] INFO org.hibernate.annotations.common.Version - Hibernate Commons Annotations 3.2.0.Final
+200 [main] INFO org.hibernate.ejb.Version - Hibernate EntityManager 3.5.2-Final
+660 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Loan
+720 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Loan on table loans
+790 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Author
+790 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Author on table authors
+840 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Item
+840 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Item on table items
+850 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Book
+850 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Book on table books
+860 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Publisher
+860 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Publisher on table publishers
+860 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Borrower
+860 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Borrower on table borrowers
+870 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.BorrowerCategory
+870 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.BorrowerCategory on table borrowercategories
+960 [main] INFO org.hibernate.cfg.annotations.CollectionBinder - Mapping collection: com.mgiandia.library.domain.Book.items -&gt; items
+960 [main] INFO org.hibernate.cfg.annotations.CollectionBinder - Mapping collection: com.mgiandia.library.domain.Borrower.loans -&gt; loans
+960 [main] INFO org.hibernate.cfg.AnnotationConfiguration - Hibernate Validator not found: ignoring
+990 [main] INFO org.hibernate.cfg.search.HibernateSearchEventListenerRegister - Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+1050 [main] INFO org.hibernate.connection.DriverManagerConnectionProvider - Using Hibernate built-in connection pool (not for production use!)
+1050 [main] INFO org.hibernate.connection.DriverManagerConnectionProvider - Hibernate connection pool size: 20
+1050 [main] INFO org.hibernate.connection.DriverManagerConnectionProvider - autocommit mode: true
+1050 [main] INFO org.hibernate.connection.DriverManagerConnectionProvider - using driver: org.h2.Driver at URL: jdbc:h2:./test
+1050 [main] INFO org.hibernate.connection.DriverManagerConnectionProvider - connection properties: {user=sa, autocommit=true, release_mode=auto}
+1567 [main] INFO org.hibernate.cfg.SettingsFactory - RDBMS: H2, version: 1.2.135 (2010-05-08)
+1567 [main] INFO org.hibernate.cfg.SettingsFactory - JDBC driver: H2 JDBC Driver, version: 1.2.135 (2010-05-08)
+1597 [main] INFO org.hibernate.dialect.Dialect - Using dialect: org.hibernate.dialect.H2Dialect
+1607 [main] INFO org.hibernate.engine.jdbc.JdbcSupportLoader - Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+1607 [main] INFO org.hibernate.transaction.TransactionFactoryFactory - Transaction strategy: org.hibernate.transaction.JDBCTransactionFactory
+1607 [main] INFO org.hibernate.transaction.TransactionManagerLookupFactory - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+1607 [main] INFO org.hibernate.cfg.SettingsFactory - Automatic flush during beforeCompletion(): disabled
+1607 [main] INFO org.hibernate.cfg.SettingsFactory - Automatic session close at end of transaction: disabled
+1607 [main] INFO org.hibernate.cfg.SettingsFactory - JDBC batch size: 15
+1607 [main] INFO org.hibernate.cfg.SettingsFactory - JDBC batch updates for versioned data: disabled
+1607 [main] INFO org.hibernate.cfg.SettingsFactory - Scrollable result sets: enabled
+1607 [main] INFO org.hibernate.cfg.SettingsFactory - JDBC3 getGeneratedKeys(): enabled
+1607 [main] INFO org.hibernate.cfg.SettingsFactory - Connection release mode: auto
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - Default batch fetch size: 1
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - Generate SQL with comments: disabled
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - Order SQL updates by primary key: disabled
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - Order SQL inserts for batching: disabled
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+1617 [main] INFO org.hibernate.hql.ast.ASTQueryTranslatorFactory - Using ASTQueryTranslatorFactory
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - Query language substitutions: {}
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - JPA-QL strict compliance: enabled
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - Second-level cache: enabled
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - Query cache: disabled
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - Optimize cache for minimal puts: disabled
+1617 [main] INFO org.hibernate.cfg.SettingsFactory - Structured second-level cache entries: disabled
+1627 [main] INFO org.hibernate.cfg.SettingsFactory - Statistics: disabled
+1627 [main] INFO org.hibernate.cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+1627 [main] INFO org.hibernate.cfg.SettingsFactory - Default entity-mode: pojo
+1627 [main] INFO org.hibernate.cfg.SettingsFactory - Named query checking : enabled
+1627 [main] INFO org.hibernate.cfg.SettingsFactory - Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+1667 [main] INFO org.hibernate.impl.SessionFactoryImpl - building session factory
+1927 [main] INFO org.hibernate.impl.SessionFactoryObjectFactory - Not binding factory to JNDI, no JNDI name configured
+1947 [main] INFO org.hibernate.tool.hbm2ddl.SchemaExport - Running hbm2ddl schema export
+1947 [main] INFO org.hibernate.tool.hbm2ddl.SchemaExport - exporting generated schema to database
+2007 [main] INFO org.hibernate.tool.hbm2ddl.SchemaExport - schema export complete
+</pre>
+</body>
+</html>

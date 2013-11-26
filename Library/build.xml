@@ -1,0 +1,528 @@
+<project name="Library" default="compile" basedir=".">
+	  
+	  <property name="system.name" value="Library" />
+	  
+	  <property name="src.dir" location="${basedir}/src" />
+	  <property name="lib.dir" location="${basedir}/lib" />
+	  <property name="build.dir" location="${basedir}/build" />
+	  <property name="test.dir" location="${basedir}/test" />
+	  <property name="doc.dir" location="${basedir}/doc"/>
+	  <property name="testdoc.dir" location="${basedir}/doc"/>
+	  <property name="reports.dir" location="${basedir}/reports"/>
+		
+	  <property name="junit.jar" location="${lib.dir}/junit-4.6.jar" />
+	
+	  <property name="api.doc.dir" location="${doc.dir}/api/"/>
+	  <property name="design.doc.dir" location="${doc.dir}/design/"/>
+	
+	  <property name="umlet.home.dir" location="C:/javahome/opt/Umlet/" />
+	  <property name="design.diagrams.dir" location="${basedir}/design/diagrams" />
+	
+	  <property name="req.dir" location="${basedir}/requirements" />
+	  <property name="req.doc.dir" location="${doc.dir}/requirements" />
+	
+	  <patternset id = "meta.files">
+	  	 <include name="**/*.xml"/>
+	  </patternset>
+		  
+	  <path id="compile.classpath">
+	    <fileset dir ="${lib.dir}">
+	    	<include name ="**/*.jar"/> 
+	    </fileset>
+	  </path>
+
+	  <target name="init" description="Compiles the code.">
+	       <mkdir dir="${build.dir}" />
+	  	   <mkdir dir="${reports.dir}" />
+	  	   <mkdir dir="${doc.dir}"/>
+	  </target>
+
+	
+	  <target name="clean-diagrams">
+	  	  <delete>
+	  	    <fileset dir="${design.diagrams.dir}" includes="**/*.png"/>
+	  	  </delete>
+
+		  <delete>
+		  	<fileset dir="${req.dir}" includes="**/*.png"/>
+		  </delete>
+	  </target>
+	  
+	
+	  <target name="clean" description="Delete build/ directory.">
+	       <delete dir="${build.dir}" />
+           <delete dir="${reports.dir}" />
+           <delete dir="${doc.dir}"/>
+	  	   <delete dir="${instr.dir}"/>
+	  </target>
+	
+	
+	  <target name="copymeta">
+	  	   <copy todir="${build.dir}">
+	  	   	  <fileset dir="${src.dir}">
+	  	   	  	  <patternset refid = "meta.files"/>
+	  	   	  </fileset>
+	  	   </copy>
+	  </target>
+
+	
+	  <target name="compile" depends="init, copymeta" description="Compiles the code.">
+	    <javac srcdir="${src.dir}" 
+	    	  destdir="${build.dir}"  
+	    	encoding="UTF-8" 
+	    	debug="on" 
+	    	includeAntRuntime="no" 
+	    	source="1.6" 
+	    	target="1.6">
+	      <classpath refid="compile.classpath" />
+	      <compilerarg value="-Xlint:all" />
+	      <compilerarg value="-Werror" />
+	      
+	      
+	    </javac>
+	  </target>
+	
+    <target name="compile-test" depends = "compile" description="Compiles the Tests.">       
+        <javac srcdir="${test.dir}" 
+        	destdir="${build.dir}" 
+        	encoding="UTF-8" 
+        	debug="on" 
+        	includeAntRuntime="no"
+	    	source="1.6" 
+	    	target="1.6">
+          <classpath refid="compile.classpath" />
+          <compilerarg value="-Xlint:all" />
+          <compilerarg value="-Werror" />
+        </javac>
+     </target>
+
+	
+	
+	<property name="junit.dir" location="${reports.dir}/junit" />
+	
+	
+	 <target name="test" depends="compile, compile-test" description="Run JUnit tests.">
+	 	<delete dir="${junit.dir}"/>
+	 	<mkdir dir="${junit.dir}" />
+	    
+	    <junit printsummary="withOutAndErr" haltonfailure="${junit.haltonfailure}">
+	      <classpath>
+	        <pathelement location="${build.dir}" />
+	        <path refid="compile.classpath" />
+	      </classpath>
+	      <formatter type="xml" />
+	      <batchtest todir="${junit.dir}">
+	        <fileset dir="${build.dir}" includes="**/*Test.class" />
+	      </batchtest>
+	    </junit>
+	  </target>
+	
+	
+	  <target name="testreport" depends = "test" description="HTML report for JUnit.">
+	    <taskdef name="junitreport"
+	             classname="org.apache.tools.ant.taskdefs.optional.junit.XMLResultAggregator" />
+	    <junitreport todir="${junit.dir}">
+	      <fileset dir="${junit.dir}" includes="TEST-*.xml" />
+	      <report format="frames" todir="${junit.dir}" />
+	    </junitreport>
+	  </target>
+	
+	
+	  <property name="emma.dir" location="${reports.dir}/emma" />		
+      <property name="instr.dir" location="${basedir}/instr"/> 
+
+	  <target name="coverage"  description="Generates Emma report."> <!--   -->
+
+	  	<property name="emma.lib.dir" value="${lib.dir}" />
+	    <path id="emma.lib.dir">
+	      <pathelement location="${emma.lib.dir}/emma.jar" />
+	      <pathelement location="${emma.lib.dir}/emma_ant.jar" />
+	    </path>
+	    <taskdef resource="emma_ant.properties" classpathref="emma.lib.dir" />
+	    
+	  	<mkdir dir="${instr.dir}"/>
+	    <mkdir dir="${emma.dir}" />
+	  	
+	  	<copy todir="${instr.dir}">
+	  	              <fileset dir="${src.dir}">
+	  	                  <patternset refid = "meta.files"/>
+	  	              </fileset>
+	  	</copy>
+	  	
+	  	<javac srcdir="${src.dir}" 
+	  		destdir="${instr.dir}" 
+	  		source="1.6" 
+	  		target="1.6" 
+	  		debug="on"
+	  		encoding="UTF-8"
+	  		includeAntRuntime="no">
+	  	          <classpath refid="compile.classpath" />
+	  	          <compilerarg value="-Xlint:all" />
+	  	          <compilerarg value="-Werror" />
+	  	</javac>
+	  	
+	  	<javac srcdir="${test.dir}" 
+	  		destdir="${instr.dir}" 
+	  		source="1.6" 
+	  		target="1.6" 
+	  		debug="on"
+	  		encoding="UTF-8"
+	  		includeAntRuntime="no">
+	  	          <classpath refid="compile.classpath" />
+	  	          <compilerarg value="-Xlint:all" />
+	  	          <compilerarg value="-Werror" />
+	  	        </javac>
+	  	
+	    <emma enabled="true">
+	      <instr instrpath="${instr.dir}" 
+	      	destdir="${instr.dir}" 
+	      	metadatafile="${emma.dir}/metadata.emma" 
+	      	merge="true" 
+	      	mode="overwrite"
+	      	>
+	      	<filter excludes="*Test*" />
+	      	<filter excludes="*Stub*" />
+	      </instr>
+	    </emma>
+
+	    
+	    <mkdir dir="${junit.dir}" />
+	    <junit printsummary="withOutAndErr" fork="yes">
+	      <classpath path="${instr.dir};${java.class.path}">
+	        <path refid="emma.lib.dir" />
+	        <path refid="compile.classpath" />
+	      </classpath>
+	      <sysproperty key="emma.coverage.out.file" value="${emma.dir}/coverage.emma" />
+	      <sysproperty key="emma.coverage.out.merge" value="true" />
+	      <formatter type="xml" />
+	      <batchtest todir="${junit.dir}">
+            
+            <fileset dir="${test.dir}">
+              <include name="**/*Test.java" />
+            </fileset>
+            
+            
+
+	      </batchtest>
+	    </junit>
+
+	
+	    <emma enabled="true">
+	      <report sourcepath="${src.dir}" 
+	      	sort="+name" metrics="method:100,block:100,line:100,class:100">
+	        <fileset dir="${emma.dir}">
+	          <include name="*.emma" />
+	        </fileset>
+	      	<property name="report.out.encoding" value="UTF-8"/>
+	        <xml outfile="${emma.dir}/coverage.xml" depth="method" />
+	        <html outfile="${emma.dir}/coverage.html" depth="method" 
+	        	columns="name,class,method,block,line"	/>
+	      </report>
+	    </emma>
+
+	  	<delete dir="${instr.dir}" />
+	  </target>
+	
+	
+	
+	  <property name="checkstyle.dir" location="${reports.dir}/checkstyle"/>
+	  <property name="checkstyle.jar" value="${lib.dir}/checkstyle-all-5.0.jar"/>
+
+	  <path id="checkstyle.classpath">
+	    <pathelement path="${build.dir}"/>
+	    <path refid="compile.classpath"/>
+	  </path>
+
+	  <target name="checkstyle" depends="compile" >	  	
+	    <taskdef resource="checkstyletask.properties" classpath="${checkstyle.jar}" />
+
+	    <mkdir dir="${checkstyle.dir}"/>
+	    <checkstyle config="${lib.dir}/checkstyle/sun_checks.xml" 
+	                failOnViolation="false" 
+	                classpathref="checkstyle.classpath">
+	      <fileset dir="${src.dir}" includes="**/*.java"  />	      
+	      <formatter type="plain"/>
+	      <formatter type="xml" tofile="${checkstyle.dir}/checkstyle.xml" />	    		    
+	    </checkstyle>
+	  	
+	  	
+        <xslt in="${checkstyle.dir}/checkstyle.xml" 
+              out="${checkstyle.dir}/index.html" 
+              style="${lib.dir}/checkstyle/checkstyle-noframes.xsl">
+          <param name="title" expression="Checkstyle Report" />
+          <param name="module" expression="Library" />
+        </xslt>
+
+	  </target>
+
+	  <target name="javadoc" depends="compile" description="Generate JavaDoc.">
+	  	<delete dir="${api.doc.dir}"/>
+	    <mkdir dir="${api.doc.dir}"/>
+	    <javadoc classpathref="compile.classpath"
+	             sourcepath="${src.dir}"
+	             destdir="${api.doc.dir}"
+	             author="true"
+	             version="true"
+	             use="true"
+	             package="true"
+	             windowtitle="Library Documentation"
+	             doctitle="Library Documentation"
+	    	   	encoding="UTF-8"
+	             failonerror="true"/>
+	  </target>
+		
+
+	  <target name="design-umlet" description="Converts Design UML diagram files to images">
+	   	 <available file="${umlet.home.dir}/umlet.jar" property="umletExists"/>
+	  	  <fail unless="umletExists" message="UMLet is not installed"/>
+
+	  	
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/BorrowerListLoading.uxf" />
+	  	  </java>
+
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/BorrowerSendMail.uxf" />
+	  	  </java>
+	  	
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/BorrowersMVP.uxf" />
+	  	  </java>
+
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/BorrowerViewBorrowItem.uxf" />
+	  	  </java>
+
+
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/BorrowerViewFindBorrower.uxf" />
+	  	  </java>
+
+	  	
+
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/EditBorrowerFromList.uxf" />
+	  	  </java>
+
+	  	
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/EmailAddress.uxf" />
+	  	  </java>
+	  	  	
+	  	
+
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/Item.uxf" />
+	  	  </java>
+	  	
+  	  	
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/ItemState.uxf" />
+	  	  </java>
+	  	
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/ItemStateTransitions.uxf" />
+	  	  </java>
+	  	
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/Layers.uxf" />
+	  	  </java>
+
+  	  	 		  	
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/LibraryDomain.uxf" />
+	  	  </java>
+
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/MVPComponents.uxf" />
+	  	  </java>
+	  	  	 	
+	  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+				<arg value="-action=convert" />
+				<arg value="-format=png" />
+				<arg value="-filename=${design.diagrams.dir}/MVPLoan.uxf" />
+	  	  </java>
+
+	  	 	
+		  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+			<arg value="-action=convert" />
+			<arg value="-format=png" />
+			<arg value="-filename=${design.diagrams.dir}/MVPReturn.uxf" />
+		  </java>
+	  	 		  	 	  	
+		  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+			<arg value="-action=convert" />
+			<arg value="-format=png" />
+			<arg value="-filename=${design.diagrams.dir}/MVPTesting.uxf" />
+		  </java>	  	
+	  	
+		  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+			<arg value="-action=convert" />
+			<arg value="-format=png" />
+			<arg value="-filename=${design.diagrams.dir}/NotificationServiceAndDao.uxf" />
+		  </java>	 
+
+	  	
+		  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+			<arg value="-action=convert" />
+			<arg value="-format=png" />
+			<arg value="-filename=${design.diagrams.dir}/ReturnViewReturnItem.uxf" />
+		  </java>
+
+	  	
+	  	
+		  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+			<arg value="-action=convert" />
+			<arg value="-format=png" />
+			<arg value="-filename=${design.diagrams.dir}/SimpleCalendar.uxf" />
+		  </java>
+	  	
+		  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+			<arg value="-action=convert" />
+			<arg value="-format=png" />
+			<arg value="-filename=${design.diagrams.dir}/ViewInterface.uxf" />
+		  </java>	  	
+	  	
+		  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+			<arg value="-action=convert" />
+			<arg value="-format=png" />
+			<arg value="-filename=${design.diagrams.dir}/ViewRegistry.uxf" />
+		  </java>
+
+
+	  	
+		  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+			<arg value="-action=convert" />
+			<arg value="-format=png" />
+			<arg value="-filename=${design.diagrams.dir}/MonetaryAmountAndMoney.uxf" />
+		  </java>
+	  </target>
+	
+	
+       <path id="wikitext.classpath">
+			<fileset dir="${lib.dir}">
+				<include name="org.eclipse.mylyn.wikitext.*core*.jar"/>
+			</fileset>
+		</path>
+
+		<taskdef classpathref="wikitext.classpath" 
+			resource="org/eclipse/mylyn/wikitext/core/util/anttask/tasks.properties" />
+	
+
+		<target name="design-doc" depends="design-umlet">
+			
+			<delete dir="${design.doc.dir}"/>
+		    <mkdir dir="${design.doc.dir}"/>
+
+			<wikitext-to-html markupLanguage="Textile" sourceEncoding="UTF-8">
+						<fileset dir="${basedir}/design">
+			    				<include name="*.textile"/>
+						</fileset>
+						<stylesheet url="styles/main.css"/>
+		    </wikitext-to-html>
+
+   		   <move todir="${design.doc.dir}">
+		     <fileset dir="${basedir}/design">
+		       <include name="**/*.html"/>
+		     </fileset>
+		   </move>
+			
+		   <mkdir dir="${design.doc.dir}/diagrams"/>
+		   <copy todir="${design.doc.dir}">
+			    <fileset dir="${basedir}/design">
+			    	<include name="**/*.png"/>
+			    	<include name="**/*.jpg"/>
+			    </fileset>
+		   </copy>
+
+		</target>
+	
+		<target name="req-umlet" description="Converts Requirements UML diagram files to images">
+		   	 <available file="${umlet.home.dir}/umlet.jar" property="umletExists"/>
+		  	  <fail unless="umletExists" message="UMLet is not installed"/>  
+			<java jar="${umlet.home.dir}/umlet.jar" fork="true">
+					<arg value="-action=convert" />
+					<arg value="-format=png" />
+					<arg value="-filename=${req.dir}/LoanItemActivity.uxf" />
+		  	  </java>
+			
+		  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+					<arg value="-action=convert" />
+					<arg value="-format=png" />
+					<arg value="-filename=${req.dir}/UseCaseDiagram.uxf" />
+		  	  </java>
+			
+
+		  	  <java jar="${umlet.home.dir}/umlet.jar" fork="true">
+					<arg value="-action=convert" />
+					<arg value="-format=png" />
+					<arg value="-filename=${req.dir}/ReturnItemSequence.uxf" />
+		  	  </java>
+
+			
+		</target>
+	
+		<target name="req-doc" depends="req-umlet">
+			
+			<delete dir="${req.doc.dir}"/>
+		    <mkdir dir="${req.doc.dir}"/>
+	
+			<wikitext-to-html markupLanguage="Textile" sourceEncoding="UTF-8">
+						<fileset dir="${req.dir}">
+			    			<include name="*.textile"/>
+						</fileset>
+						<stylesheet url="styles/main.css"/>
+		    </wikitext-to-html>
+	
+			<move todir="${req.doc.dir}">
+		    <fileset dir="${req.dir}">
+		       <include name="**/*.html"/>
+		     </fileset>
+		   </move>
+			
+		   <mkdir dir="${req.doc.dir}"/>
+		   <copy todir="${req.doc.dir}">
+			    <fileset dir="${req.dir}">
+			    	<include name="**/*.png"/>
+			    </fileset>
+		   </copy>
+	
+		</target>
+		
+	  
+	  	<target name="technical-doc" depends="clean-diagrams, design-doc, req-doc" description="Builds Technical Documentation">
+	        
+	    </target>
+
+	
+	    <target name="all" 
+	    	depends="clean, compile, test, testreport,  javadoc, checkstyle, technical-doc"/>
+</project>
+
+

@@ -1,0 +1,10 @@
+com.mgiandia.library
+com.mgiandia.library.contacts
+com.mgiandia.library.domain
+com.mgiandia.library.persistence
+com.mgiandia.library.service
+com.mgiandia.library.service.ws
+com.mgiandia.library.ui
+com.mgiandia.library.ui.borrower
+com.mgiandia.library.ui.loan
+com.mgiandia.library.util

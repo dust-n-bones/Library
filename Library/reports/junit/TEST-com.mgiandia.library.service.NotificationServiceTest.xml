@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="NDIA-HOME" name="com.mgiandia.library.service.NotificationServiceTest" tests="1" time="2.177" timestamp="2012-10-27T16:27:47">
+  <properties>
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="lib.dir" value="C:\JavaProjects\Export\Library\lib" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="checkstyle.dir" value="C:\JavaProjects\Export\Library\reports\checkstyle" />
+    <property name="sun.management.compiler" value="HotSpot Client Compiler" />
+    <property name="os.name" value="Windows 7" />
+    <property name="sun.boot.class.path" value="C:\Programs86\Java\jdk1.6.0_29\jre\lib\resources.jar;C:\Programs86\Java\jdk1.6.0_29\jre\lib\rt.jar;C:\Programs86\Java\jdk1.6.0_29\jre\lib\sunrsasign.jar;C:\Programs86\Java\jdk1.6.0_29\jre\lib\jsse.jar;C:\Programs86\Java\jdk1.6.0_29\jre\lib\jce.jar;C:\Programs86\Java\jdk1.6.0_29\jre\lib\charsets.jar;C:\Programs86\Java\jdk1.6.0_29\jre\lib\modules\jdk.boot.jar;C:\Programs86\Java\jdk1.6.0_29\jre\classes" />
+    <property name="ant.file.type.Library" value="file" />
+    <property name="req.doc.dir" value="C:\JavaProjects\Export\Library\doc\requirements" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="ant.home" value="C:\JavaHome\opt\apache-ant-1.8.3" />
+    <property name="java.runtime.version" value="1.6.0_29-b11" />
+    <property name="checkstyle.jar" value="C:\JavaProjects\Export\Library\lib/checkstyle-all-5.0.jar" />
+    <property name="umlet.home.dir" value="C:\javahome\opt\Umlet" />
+    <property name="user.name" value="Admin" />
+    <property name="build.dir" value="C:\JavaProjects\Export\Library\build" />
+    <property name="user.language" value="el" />
+    <property name="sun.boot.library.path" value="C:\Programs86\Java\jdk1.6.0_29\jre\bin" />
+    <property name="reports.dir" value="C:\JavaProjects\Export\Library\reports" />
+    <property name="ant.project.default-target" value="compile" />
+    <property name="doc.dir" value="C:\JavaProjects\Export\Library\doc" />
+    <property name="ant.project.name" value="Library" />
+    <property name="java.version" value="1.6.0_29" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="32" />
+    <property name="emma.coverage.out.file" value="C:\JavaProjects\Export\Library\reports\emma/coverage.emma" />
+    <property name="java.endorsed.dirs" value="C:\Programs86\Java\jdk1.6.0_29\jre\lib\endorsed" />
+    <property name="system.name" value="Library" />
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86" />
+    <property name="sun.jnu.encoding" value="Cp1253" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="\" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="50.0" />
+    <property name="user.country" value="GR" />
+    <property name="java.home" value="C:\Programs86\Java\jdk1.6.0_29\jre" />
+    <property name="java.vm.info" value="mixed mode, sharing" />
+    <property name="ant.file" value="C:\JavaProjects\Export\Library\build.xml" />
+    <property name="os.version" value="6.1" />
+    <property name="ant.file.Library" value="C:\JavaProjects\Export\Library\build.xml" />
+    <property name="api.doc.dir" value="C:\JavaProjects\Export\Library\doc\api" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.version" value="20.4-b02" />
+    <property name="user.variant" value="" />
+    <property name="ant.library.dir" value="C:\JavaHome\opt\apache-ant-1.8.3\lib" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="testdoc.dir" value="C:\JavaProjects\Export\Library\doc" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="req.dir" value="C:\JavaProjects\Export\Library\requirements" />
+    <property name="user.home" value="C:\Users\Admin" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="test.dir" value="C:\JavaProjects\Export\Library\test" />
+    <property name="junit.dir" value="C:\JavaProjects\Export\Library\reports\junit" />
+    <property name="java.library.path" value="C:\Programs86\Java\jdk1.6.0_29\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\jEdit;C:\Program Files (x86)\Calibre2\;C:\JavaHome\opt\apache-ant-1.8.3\bin;C:\Programs86\Graphviz 2.28\bin;C:\Programs86\MySQL\MySQL Server 5.5\bin;C:\Programs86\Java\jre6\bin;C:\Programs86\IDMComputerSolutions\UltraEdit\;." />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.mgiandia.library.service.NotificationServiceTest filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\JavaProjects\Export\Library\reports\junit\TEST-com.mgiandia.library.service.NotificationServiceTest.xml crashfile=C:\JavaProjects\Export\Library\junitvmwatcher8545980021718720884.properties propsfile=C:\JavaProjects\Export\Library\junit2991642786832635920.properties" />
+    <property name="java.class.path" value="C:\JavaProjects\Export\Library\instr;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-launcher.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-antlr.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-apache-bcel.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-apache-bsf.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-apache-log4j.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-apache-oro.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-apache-regexp.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-apache-resolver.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-apache-xalan2.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-commons-logging.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-commons-net.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-jai.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-javamail.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-jdepend.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-jmf.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-jsch.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-junit.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-junit4.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-netrexx.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-swing.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant-testutil.jar;C:\JavaHome\opt\apache-ant-1.8.3\lib\ant.jar;C:\Programs86\Java\jdk1.6.0_29\lib\tools.jar;C:\JavaProjects\Export\Library\lib\emma.jar;C:\JavaProjects\Export\Library\lib\emma_ant.jar;C:\JavaProjects\Export\Library\lib\antlr-2.7.6.jar;C:\JavaProjects\Export\Library\lib\checkstyle-all-5.0.jar;C:\JavaProjects\Export\Library\lib\commons-collections-3.1.jar;C:\JavaProjects\Export\Library\lib\dom4j-1.6.1.jar;C:\JavaProjects\Export\Library\lib\easymock.jar;C:\JavaProjects\Export\Library\lib\h2-1.2.135.jar;C:\JavaProjects\Export\Library\lib\hibernate-jpa-2.0-api-1.0.0.Final.jar;C:\JavaProjects\Export\Library\lib\hibernate3.jar;C:\JavaProjects\Export\Library\lib\javassist-3.9.0.GA.jar;C:\JavaProjects\Export\Library\lib\jta-1.1.jar;C:\JavaProjects\Export\Library\lib\junit-4.6.jar;C:\JavaProjects\Export\Library\lib\org.eclipse.mylyn.wikitext.core_1.6.0.I20120303-2255.jar;C:\JavaProjects\Export\Library\lib\org.eclipse.mylyn.wikitext.textile.core_1.6.0.I20120303-2255.jar;C:\JavaProjects\Export\Library\lib\slf4j-api-1.5.8.jar;C:\JavaProjects\Export\Library\lib\slf4j-simple-1.5.8.jar" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.8.3 compiled on February 26 2012" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type" value="file" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="junit.jar" value="C:\JavaProjects\Export\Library\lib\junit-4.6.jar" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="Service Pack 1" />
+    <property name="java.io.tmpdir" value="C:\Users\Admin\AppData\Local\Temp\" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="os.arch" value="x86" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="design.doc.dir" value="C:\JavaProjects\Export\Library\doc\design" />
+    <property name="java.ext.dirs" value="C:\Programs86\Java\jdk1.6.0_29\jre\lib\ext;C:\Windows\Sun\Java\lib\ext" />
+    <property name="user.dir" value="C:\JavaProjects\Export\Library" />
+    <property name="emma.coverage.out.merge" value="true" />
+    <property name="emma.dir" value="C:\JavaProjects\Export\Library\reports\emma" />
+    <property name="emma.lib.dir" value="C:\JavaProjects\Export\Library\lib" />
+    <property name="line.separator" value="&#xd;&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM" />
+    <property name="design.diagrams.dir" value="C:\JavaProjects\Export\Library\design\diagrams" />
+    <property name="basedir" value="C:\JavaProjects\Export\Library" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="ant.core.lib" value="C:\JavaHome\opt\apache-ant-1.8.3\lib\ant.jar" />
+    <property name="file.encoding" value="Cp1253" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="src.dir" value="C:\JavaProjects\Export\Library\src" />
+    <property name="ant.project.invoked-targets" value="coverage" />
+    <property name="instr.dir" value="C:\JavaProjects\Export\Library\instr" />
+  </properties>
+  <testcase classname="com.mgiandia.library.service.NotificationServiceTest" name="sendMessageOnOverdueJpa" time="2.107" />
+  <system-out><![CDATA[collecting runtime coverage data ...
+]]></system-out>
+  <system-err><![CDATA[0 [main] INFO org.hibernate.cfg.annotations.Version - Hibernate Annotations 3.5.2-Final
+20 [main] INFO org.hibernate.cfg.Environment - Hibernate 3.5.2-Final
+20 [main] INFO org.hibernate.cfg.Environment - hibernate.properties not found
+20 [main] INFO org.hibernate.cfg.Environment - Bytecode provider name : javassist
+30 [main] INFO org.hibernate.cfg.Environment - using JDK 1.4 java.sql.Timestamp handling
+130 [main] INFO org.hibernate.annotations.common.Version - Hibernate Commons Annotations 3.2.0.Final
+140 [main] INFO org.hibernate.ejb.Version - Hibernate EntityManager 3.5.2-Final
+550 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Loan
+590 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Loan on table loans
+650 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Borrower
+650 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Borrower on table borrowers
+690 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Publisher
+690 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Publisher on table publishers
+700 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Book
+700 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Book on table books
+710 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Author
+710 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Author on table authors
+720 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.BorrowerCategory
+720 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.BorrowerCategory on table borrowercategories
+720 [main] INFO org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: com.mgiandia.library.domain.Item
+720 [main] INFO org.hibernate.cfg.annotations.EntityBinder - Bind entity com.mgiandia.library.domain.Item on table items
+790 [main] INFO org.hibernate.cfg.annotations.CollectionBinder - Mapping collection: com.mgiandia.library.domain.Borrower.loans -> loans
+790 [main] INFO org.hibernate.cfg.annotations.CollectionBinder - Mapping collection: com.mgiandia.library.domain.Book.items -> items
+790 [main] INFO org.hibernate.cfg.AnnotationConfiguration - Hibernate Validator not found: ignoring
+820 [main] INFO org.hibernate.cfg.search.HibernateSearchEventListenerRegister - Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+860 [main] INFO org.hibernate.connection.DriverManagerConnectionProvider - Using Hibernate built-in connection pool (not for production use!)
+860 [main] INFO org.hibernate.connection.DriverManagerConnectionProvider - Hibernate connection pool size: 20
+860 [main] INFO org.hibernate.connection.DriverManagerConnectionProvider - autocommit mode: true
+860 [main] INFO org.hibernate.connection.DriverManagerConnectionProvider - using driver: org.h2.Driver at URL: jdbc:h2:./test
+860 [main] INFO org.hibernate.connection.DriverManagerConnectionProvider - connection properties: {user=sa, autocommit=true, release_mode=auto}
+1267 [main] INFO org.hibernate.cfg.SettingsFactory - RDBMS: H2, version: 1.2.135 (2010-05-08)
+1267 [main] INFO org.hibernate.cfg.SettingsFactory - JDBC driver: H2 JDBC Driver, version: 1.2.135 (2010-05-08)
+1297 [main] INFO org.hibernate.dialect.Dialect - Using dialect: org.hibernate.dialect.H2Dialect
+1307 [main] INFO org.hibernate.engine.jdbc.JdbcSupportLoader - Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+1307 [main] INFO org.hibernate.transaction.TransactionFactoryFactory - Transaction strategy: org.hibernate.transaction.JDBCTransactionFactory
+1307 [main] INFO org.hibernate.transaction.TransactionManagerLookupFactory - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Automatic flush during beforeCompletion(): disabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Automatic session close at end of transaction: disabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - JDBC batch size: 15
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - JDBC batch updates for versioned data: disabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Scrollable result sets: enabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - JDBC3 getGeneratedKeys(): enabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Connection release mode: auto
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Default batch fetch size: 1
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Generate SQL with comments: disabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Order SQL updates by primary key: disabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Order SQL inserts for batching: disabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+1307 [main] INFO org.hibernate.hql.ast.ASTQueryTranslatorFactory - Using ASTQueryTranslatorFactory
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Query language substitutions: {}
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - JPA-QL strict compliance: enabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Second-level cache: enabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Query cache: disabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Optimize cache for minimal puts: disabled
+1307 [main] INFO org.hibernate.cfg.SettingsFactory - Structured second-level cache entries: disabled
+1317 [main] INFO org.hibernate.cfg.SettingsFactory - Statistics: disabled
+1317 [main] INFO org.hibernate.cfg.SettingsFactory - Deleted entity synthetic identifier rollback: disabled
+1317 [main] INFO org.hibernate.cfg.SettingsFactory - Default entity-mode: pojo
+1317 [main] INFO org.hibernate.cfg.SettingsFactory - Named query checking : enabled
+1317 [main] INFO org.hibernate.cfg.SettingsFactory - Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+1347 [main] INFO org.hibernate.impl.SessionFactoryImpl - building session factory
+1547 [main] INFO org.hibernate.impl.SessionFactoryObjectFactory - Not binding factory to JNDI, no JNDI name configured
+1557 [main] INFO org.hibernate.tool.hbm2ddl.SchemaExport - Running hbm2ddl schema export
+1557 [main] INFO org.hibernate.tool.hbm2ddl.SchemaExport - exporting generated schema to database
+1607 [main] INFO org.hibernate.tool.hbm2ddl.SchemaExport - schema export complete
+]]></system-err>
+</testsuite>
